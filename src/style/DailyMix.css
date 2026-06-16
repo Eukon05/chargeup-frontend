@@ -1,0 +1,15 @@
+.charts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    max-width: fit-content;
+    max-height: 30vh;
+
+    padding: 10px;
+
+    border-radius: 10px;
+    border-style: solid;
+    border-color: rgb(190, 190, 190);
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0);
+}
