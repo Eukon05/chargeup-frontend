@@ -1,8 +1,5 @@
 import '../style/Spinner.css'
-
-type SpinnerProps = {
-    text: string;
-}
+import type {SpinnerProps} from '../props/SpinnerProps.ts'
 
 function Spinner(props: SpinnerProps) {
     return (

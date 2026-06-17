@@ -2,9 +2,10 @@ import { useState } from "react"
 import '../style/Common.css'
 import '../style/ChargeWindow.css'
 import type { OptimalChargeWindow } from "../model/OptimalChargeWindow"
+import type { AppParentProps } from "../props/AppParentProps"
 import Spinner from './Spinner'
 
-function ChargeWindow() {
+function ChargeWindow(props: AppParentProps) {
     const [optWindow, setOptWindow] = useState<OptimalChargeWindow>();
     const [selectedLength, setSelectedLength] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(false);
@@ -12,7 +13,12 @@ function ChargeWindow() {
     const handleClick: Function = () => {
         setLoading(true);
         fetch("/api/v1/energy/window?windowLength=" + selectedLength)
-            .then((response: Response) => response.json())
+            .then((response: Response) => {
+                if (!response.ok) {
+                    throw new Error("API Error");
+                }
+                return response.json();
+            })
             .then((data: any) => {
                 return {
                     from: new Date(data.from),
@@ -21,6 +27,7 @@ function ChargeWindow() {
                 }
             })
             .then((result: OptimalChargeWindow) => setOptWindow(result))
+            .catch(() => props.setHasError(true))
             .finally(() => setLoading(false));
     }
 
@@ -33,7 +40,7 @@ function ChargeWindow() {
             <button className="calculateButton" onClick={() => handleClick()} disabled={loading}>
                 {loading ? "Calculating..." : "Calculate optimal window"}
             </button>
-            {loading && <Spinner text="Calculating optimal window..."/>}
+            {loading && <Spinner text="Calculating optimal window..." />}
             {!loading && optWindow != undefined &&
                 <div>
                     <h3>Your optimal charging window:</h3>
