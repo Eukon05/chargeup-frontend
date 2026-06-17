@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 body {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    font-family: Rubik, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    max-width: fit-content;
+
+    gap: 10px;
 }

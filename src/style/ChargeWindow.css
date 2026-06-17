@@ -1,0 +1,19 @@
+.calculateButton {
+    margin: 5px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-color: rgb(87, 169, 116);
+    font-size: large;
+    padding: 10px;
+    color: white;
+}
+
+.calculateButton:hover {
+    border-color: rgb(90, 130, 116);
+    cursor: pointer;
+    background-color: rgb(90, 150, 116);
+}
+
+.calculateButton:active{
+    background-color: rgb(90, 130, 116);
+}
