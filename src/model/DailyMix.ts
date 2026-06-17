@@ -1,4 +1,5 @@
 export type DailyMix = {
     date: Date,
-    sourceMix: Map<string, number>
+    sourceMix: Map<string, number>,
+    cleanPerc: number
 }

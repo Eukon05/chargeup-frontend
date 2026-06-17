@@ -26,7 +26,8 @@ function CurrentMix(props: AppParentProps) {
             .then((interim: any) => {
                 const parsedMixes: DailyMix[] = interim.mixes.map((m: any) => ({
                     date: new Date(m.date),
-                    sourceMix: new Map(Object.entries(m.sourceMix))
+                    sourceMix: new Map(Object.entries(m.sourceMix)),
+                    cleanPerc: m.cleanPerc
                 }));
                 setMixes(parsedMixes);
             })
@@ -54,6 +55,7 @@ function CurrentMix(props: AppParentProps) {
                                     ],
                                 }} />
                                 <h3>{m.date.toDateString()}</h3>
+                                <h3>Clean energy share: {Math.round(m.cleanPerc)}%</h3>
                                 <h5 style={{ color: "gray" }}>{m.date > new Date() ? "Predicted" : "Actual"}</h5>
                             </div>
                         ))
