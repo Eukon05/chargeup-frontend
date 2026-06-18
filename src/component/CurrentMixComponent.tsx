@@ -11,8 +11,6 @@ ChartJS.register(ArcElement, Tooltip, Legend, Colors);
 const API_URL:string = import.meta.env.VITE_CHARGEUP_API_URL + '/api/v1/energy/current';
 
 function CurrentMix(props: AppParentProps) {
-    console.log(API_URL);
-
     const [mixes, setMixes] = useState<DailyMix[]>();
     const [loading, setLoading] = useState<boolean>(true);
 
