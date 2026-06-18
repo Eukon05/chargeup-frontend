@@ -5,6 +5,8 @@ import type { OptimalChargeWindow } from "../model/OptimalChargeWindow"
 import type { AppParentProps } from "../props/AppParentProps"
 import Spinner from './Spinner'
 
+const API_URL: string = import.meta.env.VITE_CHARGEUP_API_URL + "/api/v1/energy/window?windowLength="
+
 function ChargeWindow(props: AppParentProps) {
     const [optWindow, setOptWindow] = useState<OptimalChargeWindow>();
     const [selectedLength, setSelectedLength] = useState<number>(1);
@@ -12,7 +14,7 @@ function ChargeWindow(props: AppParentProps) {
 
     const handleClick: Function = () => {
         setLoading(true);
-        fetch("/api/v1/energy/window?windowLength=" + selectedLength)
+        fetch(API_URL + selectedLength)
             .then((response: Response) => {
                 if (!response.ok) {
                     throw new Error("API Error");
