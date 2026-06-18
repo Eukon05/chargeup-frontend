@@ -1,73 +1,27 @@
-# React + TypeScript + Vite
+# ChargeUP Frontend
+Frontend for my [ChargeUP backend](https://github.com/Eukon05/chargeup) app.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live demo
+You can check out the working demo of the project at:  
+https://chargeup-frontend.onrender.com/
 
-Currently, two official plugins are available:
+## Functionality
+ChargeUP is an EV charging optimization app.  
+Based on data about the energy mix in Great Britain, it can calculate an optimal window of time in the next two days, when the energy mix there has the highest share of clean energy sources available.  
+The user can specify how long their charging window is, and the app will calculate an optimal window of that length.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Additionally, the app displays pie charts of the current energy mix in GB, and predictions for the next two days.  
 
-## React Compiler
+![Initial view](.github/assets/frontend-start.png)
+![View after window calculation](.github/assets/frontend-calc.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech stack
+The following technologies have been used in this project:
+- HTML + CSS + TypeScript
+- React
+- [Chart JS](https://www.chartjs.org/docs/latest/) + [react-chartjs-2](https://react-chartjs-2.js.org/)
+- npm
+- Vite
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The data for GB's energy mix is being sourced from:  
+https://carbon-intensity.github.io/api-definitions/?shell#get-generation-from-to

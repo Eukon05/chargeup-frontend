@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Spinner from './Spinner'
 import type { DailyMix } from "../model/DailyMix";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Colors } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import type { AppParentProps } from "../props/AppParentProps";
 import '../style/DailyMix.css'
 import '../style/Common.css'
@@ -46,7 +46,7 @@ function CurrentMix(props: AppParentProps) {
                     {mixes && mixes.length > 0 && (
                         mixes.map((m, i) => (
                             <div key={i}>
-                                <Doughnut data={{
+                                <Pie data={{
                                     labels: Array.from(m.sourceMix.keys()),
                                     datasets: [
                                         {
